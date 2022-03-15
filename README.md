@@ -39,3 +39,9 @@ docker continter run -d --network employee-department-network --name department-
 ```properties
 department.api.base.url=http://department-api:8081/departments
 ```
+
+## To pull and run employee-service and department-service images using docker compose
+
+```shell
+docker-compose up -d
+```
