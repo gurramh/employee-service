@@ -29,9 +29,9 @@ docker network create employee-department-network
 2. Run the images in the above created network, so you can expose apis inside docker to communicate.
 
 ```shell
-docker continter run -d --nerwork employee-department-network --name employee-api -p 8082:8082 gurramh/employee-service:v1.0.0
+docker container run -d --network employee-department-network --name employee-api -p 8082:8082 gurramh/employee-service:v1.0.0
 
-docker continter run -d --network employee-department-network --name department-api -p 8081:8081 gurramh/department-service:v1.0.0
+docker container run -d --network employee-department-network --name department-api -p 8081:8081 gurramh/department-service:v1.0.0
 ```
 
 3. You can communicate using container name in the url
