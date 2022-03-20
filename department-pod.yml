@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: department-api
+  labels:
+    app: department-api
+    rel: stable
+spec:
+  containers:
+    - name: department-api
+      image: gurramh/department-service:v1.0.0
+      args:
+      - /bin/sh
+      - -c
+      - touch /tmp/healthy; sleep 30;
+        rm -rf /tmp/healthy; sleep 600;
+      ports:
+      - containerPort: 8083
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 15
+        periodSeconds: 5

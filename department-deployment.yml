@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: department-service-deployment
+  labels:
+    app: department-api
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: department-api
+  template:
+    metadata:
+      labels:
+        app: department-api
+    spec:
+      containers:
+      - name: department-api
+        image: gurramh/department-service:v1.0.1
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8081
