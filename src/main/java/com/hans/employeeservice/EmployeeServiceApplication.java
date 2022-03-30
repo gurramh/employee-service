@@ -1,5 +1,7 @@
 package com.hans.employeeservice;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -16,6 +18,14 @@ public class EmployeeServiceApplication {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
+    }
+
+    @Bean
+    ApplicationRunner configProps(@Value("${spring.application.name}") String appName, @Value("${department.api.base.url}") String departmentUrl) {
+        return args -> {
+            System.out.println("####### APP_NAME :: " + appName);
+            System.out.println("####### DEPARTMENT_URL :: " + departmentUrl);
+        };
     }
 
 }

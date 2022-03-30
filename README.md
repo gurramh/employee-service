@@ -3,7 +3,7 @@
 ## To build image from Dockerfile.
 
 ```shell
-docker image build -t gurramh/employee-service:v1.0.0 --no-cahce .
+docker image build -t gurramh/employee-service:v1.0.0 --no-cache .
 ```
 
 ## Push the image to docker hub gurramh/department-service

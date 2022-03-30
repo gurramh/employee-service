@@ -12,11 +12,22 @@ spec:
         app: employee-api
     spec:
       containers:
-      - name: employee-api
-        image: gurramh/employee-service:v1.0.0
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 8082
+        - name: employee-api
+          image: gurramh/employee-service:v1.0.1
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8082
+          env:
+            - name: DEPARTMENT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: employee-config
+                  key: departmentUrl
+            - name: APP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: employee-config
+                  key: appName
